@@ -33,7 +33,7 @@ public class SudokuField implements Serializable, Cloneable, Comparable<SudokuFi
     public void setValue(int newVal) 
     {
         //validation logic for Sudoku rules (1-9) and 0 for empty
-        if (newVal < 1 || newVal > 9) 
+        if (newVal < 0 || newVal > 9) 
         {
             throw new IllegalArgumentException("Invalid Sudoku value: " + newVal);
         }

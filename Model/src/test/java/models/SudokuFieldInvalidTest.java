@@ -12,18 +12,17 @@ public class SudokuFieldInvalidTest
     {
         SudokuField field = new SudokuField();
 
-        //invalid values should throw exception
+        //Negative numbers should throw exception
         assertThrows(IllegalArgumentException.class, () -> field.setValue(-1),
             "Should throw exception for negative numbers");
 
-        assertThrows(IllegalArgumentException.class, () -> field.setValue(0),
-            "Should throw exception for zero");
-
+        //Values > 9 should throw exception
         assertThrows(IllegalArgumentException.class, () -> field.setValue(10),
             "Should throw exception for values > 9");
 
         assertThrows(IllegalArgumentException.class, () -> field.setValue(99),
             "Should throw exception for large numbers");
+            
     }
 
     @Test
@@ -31,7 +30,11 @@ public class SudokuFieldInvalidTest
     {
         SudokuField field = new SudokuField();
 
-        //Valid boundaries
+        //0 is a valid boundary (Empty Cell)
+        field.setValue(0);
+        assertEquals(0, field.getValue(), "Zero should be valid as an empty cell");
+
+        //existing valid boundaries
         field.setValue(1);
         assertEquals(1, field.getValue());
 
